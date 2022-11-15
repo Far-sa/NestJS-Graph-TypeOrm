@@ -12,7 +12,7 @@ import { Category } from '../../category/entities/category.entity'
 @Entity()
 export class Product {
   @Field()
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: string
 
   @Field()
@@ -22,6 +22,18 @@ export class Product {
   @Field()
   @Column()
   description: string
+
+  @Field()
+  @Column()
+  quantity: number
+
+  @Field()
+  @Column()
+  price: number
+
+  @Field()
+  @Column()
+  onSale: boolean
 
   @ManyToOne(
     () => Category,

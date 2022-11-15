@@ -4,8 +4,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config'
 import { GraphQLModule } from '@nestjs/graphql'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { join } from 'path'
+import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core'
+
 import { ProductModule } from './product/product.module'
-import { CategoryModule } from './category/category.module';
+import { CategoryModule } from './category/category.module'
 
 @Module({
   imports: [
@@ -30,6 +32,8 @@ import { CategoryModule } from './category/category.module';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/graphql-schema.gql'),
+      playground: false,
+      plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),
     ProductModule,
     CategoryModule,
