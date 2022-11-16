@@ -2,8 +2,21 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Client {
+  id: String!
+  client_number: String!
+  create_at: DateTime!
+  update_at: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type Category {
   id: String!
+  name: String!
 }
 
 type Product {
@@ -17,14 +30,19 @@ type Product {
 
 type Query {
   getAllProducts: [Product!]!
-  category(id: Int!): Category!
+  getProductById(id: String!): Product!
+  getAllCategories: [Category!]!
+  getCategoryById(id: String!): Category!
+  client(id: Int!): Client!
 }
 
 type Mutation {
   CreateProduct(product: CreateProductDTO!): Product!
   createCategory(createCategoryInput: CreateCategoryInput!): Category!
-  updateCategory(updateCategoryInput: UpdateCategoryInput!): Category!
   removeCategory(id: Int!): Category!
+  createClient(createClientInput: CreateClientInput!): Client!
+  updateClient(updateClientInput: UpdateClientInput!): Client!
+  removeClient(id: Int!): Client!
 }
 
 input CreateProductDTO {
@@ -36,11 +54,15 @@ input CreateProductDTO {
 }
 
 input CreateCategoryInput {
+  name: String!
+}
+
+input CreateClientInput {
   """Example field (placeholder)"""
   exampleField: Int!
 }
 
-input UpdateCategoryInput {
+input UpdateClientInput {
   """Example field (placeholder)"""
   exampleField: Int
   id: Int!

@@ -13,6 +13,11 @@ export class ProductResolver {
     return this.productService.getAll()
   }
 
+  @Query(() => Product, { name: 'getProductById' })
+  getById (@Args('id') productId: string) {
+    return this.productService.getById(productId)
+  }
+
   @Mutation(() => Product, { name: 'CreateProduct' })
   create (@Args('product') product: CreateProductDTO) {
     return this.productService.create(product)

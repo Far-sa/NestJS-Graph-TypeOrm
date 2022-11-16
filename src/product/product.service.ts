@@ -13,6 +13,10 @@ export class ProductService {
   getAll () {
     return this.productRepository.find()
   }
+
+  getById (id: string) {
+    return this.productRepository.findOneById(id)
+  }
   async create (product: CreateProductDTO): Promise<Product> {
     const item = await this.productRepository.create(product)
     return this.productRepository.save(item)

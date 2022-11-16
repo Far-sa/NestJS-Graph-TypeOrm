@@ -8,6 +8,7 @@ import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core'
 
 import { ProductModule } from './product/product.module'
 import { CategoryModule } from './category/category.module'
+import { ClientModule } from './client/client.module'
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { CategoryModule } from './category/category.module'
     }),
     ProductModule,
     CategoryModule,
+    ClientModule,
   ],
   controllers: [],
   providers: [],
